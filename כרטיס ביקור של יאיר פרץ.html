@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="כרטיס ביקור דיגיטלי נגיש של יאיר - מומחה לדפי נחיתה ופתרונות תוכנה. ליצירת קשר מהיר וצפייה בתיק העבודות.">
+    <title>יאיר - דפי נחיתה ופיתוח אפליקציות | 052-209-1733</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* נתונים עיצוביים מהאתר שלך */
+        :root {
+            --gradient-primary: 135deg, #667eea 0%, #764ba2 100%;
+            --accent-color-gold: #FFD700;
+            --accent-color-orange: #FFA500;
+            --text-light: #f5f5f5;
+            --background-darker: #0d0d1a; 
+            /* נגישות - צבעי ניגודיות גבוהה */
+            --accessible-bg: #000000;
+            --accessible-text: #FFFFFF;
+            --accessible-accent: #FFFF00; /* צהוב בוהק */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            /* רקע מלא כפי שמופיע באתר שלך */
+            background: linear-gradient(var(--gradient-primary)); 
+            font-family: 'Assistant', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-light);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 10px;
+            transition: background 0.3s, color 0.3s; /* למעבר חלק בין מצבי נגישות */
+        }
+
+        .vcard-container {
+            width: 100%;
+            max-width: 400px;
+            background: rgba(0, 0, 0, 0.5); 
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: slideUp 0.6s ease-out;
+            transition: background 0.3s, border 0.3s;
+        }
+        
+        /* סגנונות מצב נגישות גבוהה */
+        body.high-contrast {
+            background: var(--accessible-bg) !important;
+            color: var(--accessible-text) !important;
+        }
+
+        body.high-contrast .vcard-container {
+            background: var(--accessible-bg) !important;
+            border: 3px solid var(--accessible-accent) !important;
+        }
+        
+        body.high-contrast .profile-info h2 {
+            color: var(--accessible-accent) !important;
+        }
+
+        body.high-contrast .action-button {
+            border: 2px solid var(--accessible-text) !important;
+        }
+
+        body.high-contrast .btn-main {
+            background: var(--accessible-accent) !important;
+            color: var(--accessible-bg) !important;
+        }
+        
+        body.high-contrast .btn-secondary,
+        body.high-contrast .btn-website {
+            background: var(--accessible-bg) !important;
+            color: var(--accessible-text) !important;
+            border-color: var(--accessible-text) !important;
+        }
+        
+        /* כפתור נגישות צף */
+        #accessibility-button {
+            position: fixed;
+            left: 20px;
+            bottom: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--accent-color-gold);
+            color: #333;
+            border: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            z-index: 100;
+            font-size: 1.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background 0.3s, transform 0.3s;
+            outline: none;
+        }
+        
+        #accessibility-button:hover,
+        #accessibility-button:focus-visible {
+            background: var(--accent-color-orange);
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        /* שאר הסגנונות כפי שהיו */
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .hero-image { height: 250px; background-image: url('image_23f721.jpg'); background-size: cover; background-position: center 30%; position: relative; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); }
+        .hero-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.1) 100%); }
+        main { padding: 0 1rem; }
+        .profile-info { text-align: center; padding: 1.5rem 1rem 1rem; z-index: 10; }
+        .profile-info h1 { font-size: 2rem; margin-bottom: 0.2rem; font-weight: 800; text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8); }
+        .profile-info h2 { font-size: 1.1rem; color: var(--accent-color-gold); font-weight: 400; margin-bottom: 1rem; text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); }
+        .profile-info p { font-size: 0.95rem; opacity: 0.8; margin: 0.5rem 0 1.5rem; }
+        .actions-grid { display: grid; grid-template-columns: 1fr; gap: 15px; padding: 0 20px 20px; }
+        .action-button { display: flex; align-items: center; justify-content: center; padding: 15px; border-radius: 12px; text-decoration: none; font-size: 1.05rem; font-weight: bold; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); border: none; cursor: pointer; outline: 2px solid transparent; outline-offset: 2px; }
+        .action-button:focus-visible { outline-color: var(--accent-color-gold); }
+        .action-button i { margin-left: 10px; font-size: 1.2rem; }
+        .btn-main { background: linear-gradient(45deg, var(--accent-color-gold), var(--accent-color-orange)); color: #333; box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4); }
+        .btn-main:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(255, 215, 0, 0.6); }
+        .btn-secondary { background: rgba(255, 255, 255, 0.1); color: var(--text-light); border: 1px solid rgba(255, 255, 255, 0.2); }
+        .btn-secondary:hover { background: rgba(255, 255, 255, 0.2); transform: translateY(-2px); }
+        .btn-website { background: var(--background-darker); color: white; border: 1px solid var(--background-darker); }
+        .btn-website:hover { background: #10101f; }
+        .footer-section { text-align: center; padding: 10px 20px 20px; font-size: 0.8rem; color: rgba(255, 255, 255, 0.7); }
+        .privacy-link { color: var(--accent-color-gold); text-decoration: none; margin-top: 10px; display: block; transition: color 0.3s; }
+        .privacy-link:hover { color: var(--accent-color-orange); }
+        .privacy-text { margin-bottom: 10px; font-size: 0.75rem; line-height: 1.4; }
+        @media (min-width: 600px) {
+            .actions-grid { grid-template-columns: 1fr 1fr 1fr; }
+            .btn-main, .btn-website { grid-column: span 3; }
+        }
+    </style>
+</head>
+<body>
+    <div class="vcard-container" role="document">
+        
+        <header class="hero-image" role="banner">
+            <div class="hero-overlay" aria-label="יאיר בחליפה מול מגדל אייפל, תמונה מקצועית"></div>
+        </header>
+
+        <main>
+            <section class="profile-info" role="region" aria-labelledby="profile-title">
+                <hgroup>
+                    <h1 id="profile-title">יאיר</h1>
+                    <h2>מומחה לדפי נחיתה ופתרונות תוכנה</h2>
+                </hgroup>
+                <p>מהנדס תוצאות: דפי נחיתה ממירים ואפליקציות מתקדמות 🚀</p>
+            </section>
+    
+            <section class="actions-grid" role="navigation" aria-label="דרכי יצירת קשר">
+                <a href="https://wa.me/972522091733?text=היי%20יאיר,%20אני%20רוצה%20אתר%20מנצח!" class="action-button btn-main" target="_blank" rel="noopener noreferrer" aria-label="שלח הודעה ליאיר בוואטסאפ: 052-209-1733">
+                    <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                    שלח הודעה בוואטסאפ
+                </a>
+                
+                <a href="tel:0522091733" class="action-button btn-secondary" aria-label="חייג עכשיו ליאיר: 052-209-1733">
+                    <i class="fas fa-phone-alt" aria-hidden="true"></i>
+                    חייג עכשיו
+                </a>
+                
+                <a href="mailto:przyyryair@gmail.com" class="action-button btn-secondary" aria-label="שלח אימייל ליאיר: przyyryair@gmail.com">
+                    <i class="fas fa-envelope" aria-hidden="true"></i>
+                    שלח אימייל
+                </a>
+                
+                <a href="URL_לאתר_שלך" class="action-button btn-website" target="_blank" rel="noopener noreferrer" aria-label="צפה באתר המלא של יאיר וגלריית דוגמאות">
+                    <i class="fas fa-desktop" aria-hidden="true"></i>
+                    לצפייה באתר המלא ודוגמאות
+                </a>
+            </section>
+        </main>
+        
+        <footer class="footer-section" role="contentinfo">
+            <p class="privacy-text">
+                כרטיס ביקור זה אינו אוסף נתונים אישיים. כל לחיצה על כפתור פותחת יישום חיצוני (וואטסאפ/שיחה/מייל) בשליטת המשתמש.
+            </p>
+            
+            <a href="privacy-policy.html" class="privacy-link" target="_blank" rel="noopener noreferrer" aria-label="קישור למדיניות פרטיות">
+                מדיניות פרטיות
+            </a>
+            
+            <p style="margin-top: 10px;">&copy; 2025 יאיר - דפי נחיתה ופתרונות תוכנה.</p>
+            <p style="margin-top: 5px;">אתר נבנה על ידי WebBuilder Pro (מנהל אתרים שלי)</p>
+        </footer>
+    </div>
+    
+    <button id="accessibility-button" aria-label="כפתור נגישות: ניגודיות גבוהה">
+        <i class="fas fa-universal-access" aria-hidden="true"></i>
+    </button>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const button = document.getElementById('accessibility-button');
+            const body = document.body;
+            const highContrastKey = 'highContrastMode';
+
+            // טעינת מצב נגישות מה-localStorage
+            if (localStorage.getItem(highContrastKey) === 'enabled') {
+                body.classList.add('high-contrast');
+            }
+
+            button.addEventListener('click', function() {
+                // החלפת מצב נגישות
+                const isEnabled = body.classList.toggle('high-contrast');
+                
+                // שמירת המצב ב-localStorage
+                if (isEnabled) {
+                    localStorage.setItem(highContrastKey, 'enabled');
+                    button.setAttribute('aria-pressed', 'true');
+                } else {
+                    localStorage.setItem(highContrastKey, 'disabled');
+                    button.setAttribute('aria-pressed', 'false');
+                }
+            });
+            
+            // הגדרת מצב ה-ARIA הראשוני
+            button.setAttribute('aria-pressed', body.classList.contains('high-contrast'));
+        });
+    </script>
+</body>
+</html>
