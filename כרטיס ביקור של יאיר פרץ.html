@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="כרטיס ביקור דיגיטלי נגיש של יאיר - מומחה לדפי נחיתה ופתרונות תוכנה. ליצירת קשר מהיר וצפייה בתיק העבודות.">
+    <meta name="description" content="כרטיס ביקור דיגיטלי נגיש של יאיר - מומחה לדפי נחיתה ופתרונות תוכנה. ליצירת קשר מהיר.">
     <title>יאיר - דפי נחיתה ופיתוח אפליקציות | 052-209-1733</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -76,8 +76,7 @@
             color: var(--accessible-bg) !important;
         }
         
-        body.high-contrast .btn-secondary,
-        body.high-contrast .btn-website {
+        body.high-contrast .btn-secondary {
             background: var(--accessible-bg) !important;
             color: var(--accessible-text) !important;
             border-color: var(--accessible-text) !important;
@@ -111,12 +110,9 @@
             transform: scale(1.05);
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
         }
-
-        /* שאר הסגנונות כפי שהיו */
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        
+        /* שאר הסגנונות */
+        @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
         .hero-image { height: 250px; background-image: url('image_23f721.jpg'); background-size: cover; background-position: center 30%; position: relative; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); }
         .hero-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.1) 100%); }
         main { padding: 0 1rem; }
@@ -132,15 +128,14 @@
         .btn-main:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(255, 215, 0, 0.6); }
         .btn-secondary { background: rgba(255, 255, 255, 0.1); color: var(--text-light); border: 1px solid rgba(255, 255, 255, 0.2); }
         .btn-secondary:hover { background: rgba(255, 255, 255, 0.2); transform: translateY(-2px); }
-        .btn-website { background: var(--background-darker); color: white; border: 1px solid var(--background-darker); }
-        .btn-website:hover { background: #10101f; }
+        
         .footer-section { text-align: center; padding: 10px 20px 20px; font-size: 0.8rem; color: rgba(255, 255, 255, 0.7); }
         .privacy-link { color: var(--accent-color-gold); text-decoration: none; margin-top: 10px; display: block; transition: color 0.3s; }
         .privacy-link:hover { color: var(--accent-color-orange); }
         .privacy-text { margin-bottom: 10px; font-size: 0.75rem; line-height: 1.4; }
         @media (min-width: 600px) {
-            .actions-grid { grid-template-columns: 1fr 1fr 1fr; }
-            .btn-main, .btn-website { grid-column: span 3; }
+            .actions-grid { grid-template-columns: 1fr 1fr; /* כפתורים מחולקים ל-2 עמודות במקום 3 כעת */ }
+            .btn-main { grid-column: span 2; } /* וואטסאפ יתפרס על 2 עמודות */
         }
     </style>
 </head>
@@ -176,11 +171,7 @@
                     שלח אימייל
                 </a>
                 
-                <a href="URL_לאתר_שלך" class="action-button btn-website" target="_blank" rel="noopener noreferrer" aria-label="צפה באתר המלא של יאיר וגלריית דוגמאות">
-                    <i class="fas fa-desktop" aria-hidden="true"></i>
-                    לצפייה באתר המלא ודוגמאות
-                </a>
-            </section>
+                </section>
         </main>
         
         <footer class="footer-section" role="contentinfo">
